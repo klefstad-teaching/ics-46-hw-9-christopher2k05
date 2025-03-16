@@ -1,6 +1,8 @@
 #include "dijkstras.h"
+#include <functional>
 #include <queue>
 #include <utility>
+#include <vector>
 
 constexpr int UNDEFINED = -1;
 
@@ -10,7 +12,7 @@ vector<int> dijkstra_shortest_path(const Graph &G, int source, vector<int> &prev
     vector<bool> visited(num_vertices, false);
     distances[source] = 0;
     previous[source] = UNDEFINED;
-    priority_queue<pair<int, int>> minHeap;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> minHeap;
     minHeap.push({source, 0});
     while (!minHeap.empty()) {
         int u = minHeap.top().first;
