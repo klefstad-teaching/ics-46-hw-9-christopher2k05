@@ -35,6 +35,10 @@ bool is_adjacent(const string &word1, const string &word2) {
 }
 
 vector<string> generate_word_ladder(const string &begin_word, const string &end_word, const set<string> &word_list) {
+    if (begin_word == end_word) {
+        error(begin_word, end_word, "begin and end words cannot be the same");
+        return {};
+    }
     queue<vector<string>> ladder_queue;
     ladder_queue.push({begin_word});
     set<string> visited;
